@@ -285,14 +285,15 @@ public class MainActivity extends Activity implements OnClickListener, OnItemCli
 			mDrawerLayout.closeDrawers();
 		}
 	}
-	
+
 	private void applyStyle(int styleNo) {
+		float scaleCoeff = 1f * originBitmap.getWidth() / 100;
 		switch (styleNo) {
 		case BitmapFilter.AVERAGE_BLUR_STYLE:
 			changeBitmap = BitmapFilter.changeStyle(originBitmap, BitmapFilter.AVERAGE_BLUR_STYLE, 5); // maskSize, must odd
 			break;
 		case BitmapFilter.GAUSSIAN_BLUR_STYLE:
-			changeBitmap = BitmapFilter.changeStyle(originBitmap, BitmapFilter.GAUSSIAN_BLUR_STYLE, 1.2); // sigma
+			changeBitmap = BitmapFilter.changeStyle(originBitmap, styleNo, 1.2 * scaleCoeff);
 			break;
 		case BitmapFilter.SOFT_GLOW_STYLE:
 			changeBitmap = BitmapFilter.changeStyle(originBitmap, BitmapFilter.SOFT_GLOW_STYLE, 0.6);
